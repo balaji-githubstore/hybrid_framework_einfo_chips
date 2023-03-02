@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from assertpy import assert_that
 
 
+
 class TestLoginUI:
     def test_title(self):
         serv_driver = Service(executable_path=r"C:\Users\JiDi\Downloads\chromedriver_win32 (5)\chromedriver.exe")
