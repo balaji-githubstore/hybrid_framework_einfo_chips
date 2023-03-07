@@ -2,17 +2,15 @@ import pytest
 
 
 class TestAddEmployee:
-
-    @pytest.mark.smoke
     def test_add_valid_employee(self):
-        print("add valid employee")
-
-
-class TestEditEmployee:
-    def test_edit_employee1(self):
-        print("edit employee")
-
-    @pytest.mark.smoke
-    @pytest.mark.bala
-    def test_edit_employee2(self):
-        print("edit employee")
+        self.driver.find_element(By.NAME, "username").send_keys("Admin")
+        self.driver.find_element(By.NAME, "password").send_keys("admin123")
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
+        # click on PIM menu
+        # click on Add Employee
+        # enter first name as John
+        # enter middle name as J
+        # enter lastname as wick
+        # click on save
+        # Assert the profile header as John Wick
+        # Assert the Firstname textbox should contain value as John
