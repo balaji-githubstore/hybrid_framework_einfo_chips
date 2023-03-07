@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.service import Service
 
 
 class WebDriverWrapper:
+    # driver = None
+
     @pytest.fixture(scope="function", autouse=True)
     def browser_config(self):
         serv_driver = Service(executable_path=r"C:\Users\JiDi\Downloads\chromedriver_win32 (5)\chromedriver.exe")

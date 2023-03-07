@@ -5,6 +5,7 @@ from base.webdriver_listener import WebDriverWrapper
 
 
 class TestLogin(WebDriverWrapper):
+
     def test_valid_login(self):
         self.driver.find_element(By.NAME, "username").send_keys("Admin")
         self.driver.find_element(By.NAME, "password").send_keys("admin123")
@@ -13,8 +14,11 @@ class TestLogin(WebDriverWrapper):
         assert_that("Dashboard").is_equal_to(actual_text)
 
     def test_invalid_login(self):
-        pass
-        # provider invalid username and password assert the error "Invalid credentials"
+        self.driver.find_element(By.NAME, "username").send_keys("john")
+        self.driver.find_element(By.NAME, "password").send_keys("john123")
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
+        actual_error = self.driver.find_element(By.XPATH, "//p[contains(normalize-space(),'Invalid')]").text
+        assert_that("Invalid credentials").is_equal_to(actual_error)
 
 
 class TestLoginUI(WebDriverWrapper):
