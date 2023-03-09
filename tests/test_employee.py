@@ -1,7 +1,4 @@
-import time
-
-import pytest
-from selenium import webdriver
+from assertpy import assert_that
 from selenium.webdriver.common.by import By
 
 from base.webdriver_listener import WebDriverWrapper
@@ -12,25 +9,16 @@ class TestAddEmployee(WebDriverWrapper):
         self.driver.find_element(By.NAME, "username").send_keys("Admin")
         self.driver.find_element(By.NAME, "password").send_keys("admin123")
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
-        self.driver.find_element(By.XPATH,"//span[normalize-space()='PIM']").click()
-        self.driver.find_element(By.LINK_TEXT,"Add Employee").click()
-        # enter first name as John
+        self.driver.find_element(By.XPATH, "//span[normalize-space()='PIM']").click()
+        self.driver.find_element(By.LINK_TEXT, "Add Employee").click()
         self.driver.find_element(By.NAME, "firstName").send_keys("John")
         self.driver.find_element(By.NAME, "middleName").send_keys("J")
         self.driver.find_element(By.NAME, "lastName").send_keys("wick")
-        time.sleep(5)
-        # self.driver.find_element(By.XPATH, "//label[normalize-space()='Employee Id']/following::input").clear()
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Save']").click()
 
-        action=webdriver.ActionChains(self.driver)
-        ele=self.driver.find_element(By.XPATH, "//label[normalize-space()='Employee Id']/following::input")
-        action.click(ele).key_down(webdriver.Keys.CONTROL)\
-            .send_keys("a").key_up(webdriver.Keys.CONTROL)\
-            .send_keys(webdriver.Keys.DELETE).perform()
+        actual_profile_header = self.driver.find_element(By.XPATH, "//h6[contains(normalize-space(),'John')]").text
+        # actual_profile_header = self.driver.find_element(By.XPATH, "//h6[@class='oxd-text oxd-text--h6 --strong']").text
+        actual_first_name = self.driver.find_element(By.NAME, "firstName").get_attribute("value")
 
-        self.driver.find_element(By.XPATH,"//label[normalize-space()='Employee Id']/following::input").send_keys("988")
-        time.sleep(5)
-        # enter middle name as J
-        # enter lastname as wick
-        # click on save
-        # Assert the profile header as John Wick
-        # Assert the Firstname textbox should contain value as John
+        assert_that("John wick").is_equal_to(actual_profile_header)
+        assert_that("John").is_equal_to(actual_first_name)
