@@ -3,3 +3,9 @@ test_invalid_login_data = [
     ("kim", "kim123", "Invalid credentials"),
     ("john", "john123", "Invalid credentials")
 ]
+
+test_invalid_login_data1 = [
+    ["saul", "saul123", "Invalid credentials"],
+    ["kim", "kim123", "Invalid credentials"],
+    ["john", "john123", "Invalid credentials"]
+]

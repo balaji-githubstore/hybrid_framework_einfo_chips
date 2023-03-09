@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 
 
 class WebDriverWrapper:
-    # driver = None
+    driver = None
 
     @pytest.fixture(scope="function", autouse=True)
     def browser_config(self):

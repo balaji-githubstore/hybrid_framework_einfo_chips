@@ -7,7 +7,6 @@ from utilities import data_source
 
 
 class TestLogin(WebDriverWrapper):
-
     def test_valid_login(self):
         self.driver.find_element(By.NAME, "username").send_keys("Admin")
         self.driver.find_element(By.NAME, "password").send_keys("admin123")
