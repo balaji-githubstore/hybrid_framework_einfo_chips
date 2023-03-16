@@ -11,12 +11,6 @@ from utilities import data_source
 
 
 class TestAddEmployee(WebDriverWrapper):
-    """Run below method using two set of test data
-    Admin, admin123, C:\Mine\Balaji-Profile_2023.pdf, File type not allowed
-    Admin, admin123, C:\Mine\Balaji-Profile_2023.txt, File type not allowed
-
-    Keep the test data in excel
-    """
     @pytest.mark.parametrize('username,password,upload_file,expected_error',
                              data_source.test_invalid_profile_upload_data)
     def test_invalid_profile_upload(self,username,password,upload_file,expected_error):
