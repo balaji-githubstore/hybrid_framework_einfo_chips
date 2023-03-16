@@ -14,8 +14,10 @@ class TestLogin(WebDriverWrapper):
         # self.driver.find_element(By.NAME, "username").send_keys("Admin")
         # self.driver.find_element(By.NAME, "password").send_keys("admin123")
 
-        LoginPage.enter_username(self.driver,"Admin")
-        LoginPage.enter_password(self.driver,"admin123")
+        login_page = LoginPage(self.driver)
+        login_page.enter_username("Admin")
+        login_page.enter_password("admin123")
+
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
         actual_text = self.driver.find_element(By.XPATH, "//h6[normalize-space()='Dashboard']").text
         assert_that("Dashboard").is_equal_to(actual_text)

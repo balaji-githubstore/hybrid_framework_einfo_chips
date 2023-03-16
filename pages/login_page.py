@@ -3,10 +3,11 @@ from selenium.webdriver.common.by import By
 
 class LoginPage:
 
-    @staticmethod
-    def enter_username(driver, username):
-        driver.find_element(By.NAME, "username").send_keys(username)
+    def __init__(self, driver):
+        self.driver = driver
 
-    @staticmethod
-    def enter_password(driver,password):
-        driver.find_element(By.NAME, "password").send_keys(password)
+    def enter_username(self, username):
+        self.driver.find_element(By.NAME, "username").send_keys(username)
+
+    def enter_password(self, password):
+        self.driver.find_element(By.NAME, "password").send_keys(password)
