@@ -13,12 +13,11 @@ class WebDriverWrapper:
         browser_name = read_utils.get_value_from_json("../test_data/data.json", "browser")
 
         if browser_name == "edge":
-
             self.driver = webdriver.Edge()
         elif browser_name == "ff":
             self.driver = webdriver.Firefox()
         else:
-            opt=webdriver.ChromeOptions()
+            opt = webdriver.ChromeOptions()
             opt.add_argument("start-maximized")
             self.driver = webdriver.Chrome(opt)
 

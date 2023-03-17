@@ -14,3 +14,9 @@ class WebDriverKeywords:
 
     def type_by_locator(self, locator, text):
         self.wait.until(expected_conditions.visibility_of_element_located(locator)).send_keys(text)
+
+    def get_attribute_value(self, locator, attribute_name):
+        return self.wait.until(expected_conditions.visibility_of_element_located(locator)).get_attribute(attribute_name)
+
+    def get_text_by_locator(self, locator):
+        return self.wait.until(expected_conditions.visibility_of_element_located(locator)).text
