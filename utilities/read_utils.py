@@ -23,3 +23,8 @@ def get_sheet_as_list(file_path, sheet_name):
 def get_value_from_json(file_path, key):
     dic = pandas.read_json(path_or_buf=file_path, typ="dictionary")
     return dic[key]
+
+
+def get_json_as_dic(file_path, key):
+    output = pandas.read_json(path_or_buf=file_path, typ="dictionary")
+    return output
