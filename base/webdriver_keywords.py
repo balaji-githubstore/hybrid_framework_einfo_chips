@@ -1,6 +1,8 @@
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
+"""Class contains all the selenium webdriver keywords """
+
 
 class WebDriverKeywords:
     def __init__(self, driver):
