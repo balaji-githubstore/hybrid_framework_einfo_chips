@@ -1,9 +1,9 @@
 from utilities import read_utils
 
-# test_invalid_login_data = [
-#     ("saul", "saul123", "Invalid credentials"),
-#     ("kim", "kim123", "Invalid credentials")
-# ]
+test_invalid_login_data = [
+    ("saul", "saul123", "Invalid credentials"),
+    ("kim", "kim123", "Invalid credentials")
+]
 #
 # test_invalid_login_data1 = [
 #     ["saul", "saul123", "Invalid credentials"],
@@ -17,7 +17,7 @@ from utilities import read_utils
 # ]
 
 
-test_invalid_login_data = read_utils.get_csv_as_list("../test_data/test_invalid_login_data.csv")
+# test_invalid_login_data = read_utils.get_csv_as_list("../test_data/test_invalid_login_data.csv")
 
 test_add_valid_employee_data = read_utils.get_sheet_as_list("../test_data/orange_test_data.xlsx",
                                                             "test_add_valid_employee")

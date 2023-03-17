@@ -11,3 +11,7 @@ class LoginPage:
 
     def enter_password(self, password):
         self.driver.find_element(By.NAME, "password").send_keys(password)
+
+    def click_on_login(self):
+        self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
+
