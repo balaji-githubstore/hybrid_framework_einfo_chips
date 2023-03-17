@@ -15,3 +15,6 @@ class LoginPage:
     def click_on_login(self):
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
 
+    @property
+    def get_invalid_error_message(self):
+        return self.driver.find_element(By.XPATH, "//p[contains(normalize-space(),'Invalid')]").text

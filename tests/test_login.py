@@ -17,18 +17,19 @@ class TestLogin(WebDriverWrapper):
         login_page.enter_password("admin123")
         login_page.click_on_login()
 
-        dashboard_page=DashboardPage(self.driver)
+        dashboard_page = DashboardPage(self.driver)
         assert_that("Dashboard").is_equal_to(dashboard_page.get_dashboard_header)
 
     """Invalid Login Test - Data Driven Using .csv file"""
 
     @pytest.mark.parametrize("username, password, expected_error", data_source.test_invalid_login_data)
     def test_invalid_login(self, username, password, expected_error):
-        self.driver.find_element(By.NAME, "username").send_keys(username)
-        self.driver.find_element(By.NAME, "password").send_keys(password)
-        self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
-        actual_error = self.driver.find_element(By.XPATH, "//p[contains(normalize-space(),'Invalid')]").text
-        assert_that(expected_error).is_equal_to(actual_error)
+        login_page = LoginPage(self.driver)
+        login_page.enter_username(username)
+        login_page.enter_password(password)
+        login_page.click_on_login()
+
+        assert_that(expected_error).is_equal_to(login_page.get_invalid_error_message)
 
 
 class TestLoginUI(WebDriverWrapper):
